@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
-import TaskForm from '../components/TransactionForm';
+import TransactionForm from '../components/TransactionForm';
 //import TaskList from '../components/TransactionList';
 import { useAuth } from '../context/AuthContext';
 
@@ -15,7 +15,7 @@ const Transactions = () => {
         const response = await axiosInstance.get('/api/transactions', {
           headers: { Authorization: `Bearer ${user.token}` },
         });
-        setTasks(response.data);
+        setTransactions(response.data);
       } catch (error) {
         alert('Failed to fetch transactions.');
       }

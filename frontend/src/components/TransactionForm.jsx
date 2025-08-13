@@ -45,7 +45,7 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded mb-6">
-      <h1 className="text-2xl font-bold mb-4">{editingTransaction ? 'Transaction' : 'Your Form Name: Create Operation'}</h1>
+      <h1 className="text-2xl font-bold mb-4">{editingTransaction ? 'Update Transaction' : 'Create Transaction'}</h1>
       <input
         type="text"
         placeholder="Vendor"
@@ -54,32 +54,36 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
         className="w-full mb-4 p-2 border rounded"
       />
       <input
-        type="text"
+        type="date"
         placeholder="Date"
         value={formData.date}
         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
       />
       <input
-        type="Type"
+        type="text"
+        placeholder="Type"
         value={formData.type}
         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
       />
       <input
-        type="Category"
+        type="text"
+        placeholder="Category"
         value={formData.category}
         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
       />
       <input
-        type="Amount"
+        type="text"
+        placeholder="Amount ($)"
         value={formData.amount}
         onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
       />
       <input
-        type="Description"
+        type="text"
+        placeholder="Description"
         value={formData.description}
         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
