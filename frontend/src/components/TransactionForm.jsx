@@ -52,6 +52,7 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
         value={formData.vendor}
         onChange={(e) => setFormData({ ...formData, vendor: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
+        required
       />
       <input
         type="date"
@@ -59,27 +60,42 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
         value={formData.date}
         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
+        required
       />
-      <input
-        type="text"
-        placeholder="Type"
+      <select 
         value={formData.type}
         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
-      />
-      <input
-        type="text"
-        placeholder="Category"
+        required
+      >
+        <option value="Send">Send</option>
+        <option value="Receive">Receive</option>
+      </select>
+      <select 
+        placeholder="category"
         value={formData.category}
         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
-      />
+        required
+      >
+        <option value="">Select a Category</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Rent">Rent</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Fuel">Fuel</option>
+        <option value="Bills">Bills</option>
+        <option value="Other">Other</option>
+      </select>
+      
       <input
-        type="text"
+        type="number"
         placeholder="Amount ($)"
         value={formData.amount}
-        onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+        onChange={(e) => setFormData({ ...formData, amount: parseFloat(e.target.value) || '' })}
         className="w-full mb-4 p-2 border rounded"
+        min="0"
+        step="0.01"
+        required
       />
       <input
         type="text"

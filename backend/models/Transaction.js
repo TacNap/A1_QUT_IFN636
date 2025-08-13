@@ -4,7 +4,7 @@ const transactionSchema = new mongoose.Schema({
     date: { type: Date },
     type: { type: String, enum: ['Send', 'Receive'], required: true },
     category: { type: String, enum: ['Groceries', 'Rent', 'Entertainment', 'Fuel', 'Bills', 'Other'], required: true },    
-    amount: { type: int, required: true },
+    amount: { type: Number, required: true },
     description: { type: String } 
 });
 
