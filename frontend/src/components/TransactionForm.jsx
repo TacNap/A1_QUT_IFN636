@@ -68,6 +68,7 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
         className="w-full mb-4 p-2 border rounded"
         required
       >
+        <option value="">Select a Transaction Type</option>
         <option value="Send">Send</option>
         <option value="Receive">Receive</option>
       </select>
@@ -105,7 +106,7 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
         className="w-full mb-4 p-2 border rounded"
       />
       <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
-        {editingTransaction ? 'Update Button' : 'Create Button'}
+        {editingTransaction ? 'Update' : 'Submit'}
       </button>
     </form>
   );

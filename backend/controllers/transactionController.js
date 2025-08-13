@@ -1,4 +1,4 @@
-const Transaction = require('../Transaction');
+const Transaction = require('../models/Transaction');
 
 const addTransaction = async(req, res) => {
     const { vendor, date, type, category, amount, description } = req.body;
@@ -9,3 +9,5 @@ const addTransaction = async(req, res) => {
         res.status(500).json({ message: error.message });
     }
 } 
+
+module.exports = { addTransaction };
