@@ -42,10 +42,10 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
     }
   };
 
-  // setFormData({ vendor: '', date: '', type: '', category: '', amount: '', description: ''});
+
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded mb-6">
-      <h1 className="text-2xl font-bold mb-4">{editingTransaction ? 'Your Form Name: Edit Operation' : 'Your Form Name: Create Operation'}</h1>
+      <h1 className="text-2xl font-bold mb-4">{editingTransaction ? 'Transaction' : 'Your Form Name: Create Operation'}</h1>
       <input
         type="text"
         placeholder="Vendor"
