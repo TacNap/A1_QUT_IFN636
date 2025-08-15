@@ -39,5 +39,16 @@ const updateTransaction = async(req, res) => {
     }
 };
 
+const deleteTransaction = async(req,res) => {
+    try {
+        const transaction = await Transaction.findById(req.params.id);
+        if(!transaction) return res.status(404).json({ message: "Transaction not found" });
 
-module.exports = { addTransaction, getTransactions, updateTransaction };
+        await transaction.remove();
+        res.json({ message: "Transaction deleted" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports = { addTransaction, getTransactions, updateTransaction, deleteTransaction };
