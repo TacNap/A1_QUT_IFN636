@@ -1,5 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
+import BudgetProgressBar from './BudgetProgressBar';
 
 const BudgetList = ({ budgets, setBudgets, setEditingBudget }) => {
   const { user } = useAuth();
@@ -56,6 +57,13 @@ const BudgetList = ({ budgets, setBudgets, setEditingBudget }) => {
         ))}
       </tbody>
     </table>
+    
+    <div className="mt-6">
+      <h2 className="text-xl font-bold mb-4 text-gray-800">Budget Progress</h2>
+      {budgets.map((budget) => (
+        <BudgetProgressBar key={budget._id} budget={budget} />
+      ))}
+    </div>
     </div>
   );
 };
