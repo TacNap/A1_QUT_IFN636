@@ -10,6 +10,7 @@ const TransactionList = ({ transactions, setTransaction, setEditingTransaction }
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setTransaction(transactions.filter((transaction) => transaction._id !== transactionId));
+      alert('Success!');
     } catch (error) {
       alert('Failed to delete transaction.');
     }
@@ -18,11 +19,11 @@ const TransactionList = ({ transactions, setTransaction, setEditingTransaction }
   
 
   return (
-      <table className="w-full border-collapse bg-white shadow rounded">
+    <div className="">
+      <table className="w-full border-collapse bg-white shadow-md rounded-lg mb-6 p-6">
       <thead>
         <tr className="bg-gray-100">
           <th className="border p-3 text-left font-bold">Vendor</th>
-          <th className="border p-3 text-left font-bold">Type</th>
           <th className="border p-3 text-left font-bold">Category</th>
           <th className="border p-3 text-left font-bold">Amount</th>
           <th className="border p-3 text-left font-bold">Description</th>
@@ -35,15 +36,13 @@ const TransactionList = ({ transactions, setTransaction, setEditingTransaction }
         {transactions.map((transaction) => (
           <tr key={transaction._id} className="hover:bg-gray-50">
             <td className="border p-3 font-bold">{transaction.vendor}</td>
-            <td className="border p-3">
-              <span className={`px-2 py-1 rounded text-xs font-medium ${
+            <td className="border p-3">{transaction.category}</td>
+            <td className="border p-3 font-medium"><span className={`px-2 py-1 rounded  font-medium ${
                 transaction.type === 'Send' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'
               }`}>
-                {transaction.type}
+                ${transaction.amount}
               </span>
             </td>
-            <td className="border p-3">{transaction.category}</td>
-            <td className="border p-3 font-medium">${transaction.amount}</td>
             <td className="border p-3">{transaction.description}</td>
             <td className="border p-3 text-sm text-gray-500">{new Date(transaction.date).toLocaleDateString()}</td>
             <td className="border p-3">
@@ -66,6 +65,7 @@ const TransactionList = ({ transactions, setTransaction, setEditingTransaction }
         ))}
       </tbody>
     </table>
+    </div>
   );
 };
 
