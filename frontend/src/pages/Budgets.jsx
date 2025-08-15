@@ -32,6 +32,8 @@ const Budgets = () => {
         editingBudget={editingBudget}
         setEditingBudget={setEditingBudget}
       />
+
+
       <h1 className="text-2xl font-bold mb-4">Budgets</h1>
       <BudgetList budgets={budgets} setBudgets={setBudgets} setEditingBudget={setEditingBudget} /> 
     </div>
