@@ -1,5 +1,14 @@
 const Transaction = require('../models/Transaction');
 
+const getTransactions = async(req, res) => {
+    try {
+        const transactions = await Transaction.find({ userId: req.user.id });
+        res.json(transactions);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 const addTransaction = async(req, res) => {
     const { vendor, date, type, category, amount, description } = req.body;
     try {
@@ -8,6 +17,6 @@ const addTransaction = async(req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-} 
+}; 
 
-module.exports = { addTransaction };
+module.exports = { addTransaction, getTransactions };
