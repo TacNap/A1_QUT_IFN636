@@ -10,7 +10,7 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
     if (editingTransaction) {
       setFormData({
         vendor: editingTransaction.vendor,
-        date: editingTransaction.date,
+        date: editingTransaction.date ? new Date(editingTransaction.date).toISOString().split('T')[0] : '',
         type: editingTransaction.type,
         category: editingTransaction.category,
         amount: editingTransaction.amount,
@@ -37,6 +37,7 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
       }
       setEditingTransaction(null);
       setFormData({ vendor: '', date: '', type: '', category: '', amount: '', description: '' });
+      alert('Success!');
     } catch (error) {
       alert('Failed to save transaction.');
     }
