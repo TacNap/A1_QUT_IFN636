@@ -32,6 +32,7 @@ const Transactions = () => {
         editingTransaction={editingTransaction}
         setEditingTransaction={setEditingTransaction}
       />
+      <h1 className="text-2xl font-bold mb-4">Transactions</h1>
       <TransactionList transactions={transactions} setTransactions={setTransactions} setEditingTransaction={setEditingTransaction} />
     </div>
   );
