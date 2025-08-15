@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
 import BudgetForm from '../components/BudgetForm';
-//import BudgetList from '../components/BudgetList'; not implemented yet
+import BudgetList from '../components/BudgetList'; 
 import { useAuth } from '../context/AuthContext';
 
 const Budgets = () => {
@@ -33,8 +33,7 @@ const Budgets = () => {
         setEditingBudget={setEditingBudget}
       />
       <h1 className="text-2xl font-bold mb-4">Budgets</h1>
-      {/* Uncomment after Get is implemented */}
-      {/* <BudgetList budgets={budgets} setBudgets={setBudgets} setEditingBudget={setEditingBudget} /> */}
+      <BudgetList budgets={budgets} setBudgets={setBudgets} setEditingBudget={setEditingBudget} /> 
     </div>
   );
 };
