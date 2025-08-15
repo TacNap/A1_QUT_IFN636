@@ -1,7 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
 
-const TransactionList = ({ transactions, setTransaction, setEditingTransaction }) => {
+const TransactionList = ({ transactions, setTransactions, setEditingTransaction }) => {
   const { user } = useAuth();
 
   const handleDelete = async (transactionId) => {
@@ -9,7 +9,7 @@ const TransactionList = ({ transactions, setTransaction, setEditingTransaction }
       await axiosInstance.delete(`/api/transactions/${transactionId}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
-      setTransaction(transactions.filter((transaction) => transaction._id !== transactionId));
+      setTransactions(transactions.filter((transaction) => transaction._id !== transactionId));
       alert('Success!');
     } catch (error) {
       alert('Failed to delete transaction.');
