@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
 import TransactionForm from '../components/TransactionForm';
-//import TransactionList from '../components/TransactionList';
+import TransactionList from '../components/TransactionList';
 import { useAuth } from '../context/AuthContext';
 
 const Transactions = () => {
@@ -32,7 +32,7 @@ const Transactions = () => {
         editingTransaction={editingTransaction}
         setEditingTransaction={setEditingTransaction}
       />
-      {/* <TransactionList transactions={transactions} setTransactions={setTransactions} setEditingTransaction={setEditingTransaction} /> */}
+      <TransactionList transactions={transactions} setTransactions={setTransactions} setEditingTransaction={setEditingTransaction} />
     </div>
   );
 };

@@ -19,9 +19,9 @@ const TransactionList = ({ transactions, setTransaction, setEditingTransaction }
     <div>
       {transactions.map((transaction) => (
         <div key={transaction._id} className="bg-gray-100 p-4 mb-4 rounded shadow">
-          <h2 className="font-bold">{transaction.title}</h2>
+          <h2 className="font-bold">{transaction.vendor}</h2>
           <p>{transaction.description}</p>
-          <p className="text-sm text-gray-500">Deadline: {new Date(transaction.deadline).toLocaleDateString()}</p>
+          <p className="text-sm text-gray-500">Date: {new Date(transaction.date).toLocaleDateString()}</p>
           <div className="mt-2">
             <button
               onClick={() => setEditingTransaction(transaction)}
