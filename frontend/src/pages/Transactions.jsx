@@ -9,6 +9,17 @@ const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
 
+  const calculateNetFlow = () => {
+    return transactions.reduce((total, transaction) => {
+      if (transaction.type === 'Send') {
+        return total - parseFloat(transaction.amount);
+      } else if (transaction.type === 'Receive') {
+        return total + parseFloat(transaction.amount);
+      }
+      return total;
+    }, 0);
+  };
+
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
@@ -32,8 +43,16 @@ const Transactions = () => {
         editingTransaction={editingTransaction}
         setEditingTransaction={setEditingTransaction}
       />
+      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h2 className="text-xl font-bold mb-2">Net Flow</h2>
+        <div className={`text-3xl font-bold ${calculateNetFlow() >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          ${calculateNetFlow().toFixed(2)}
+        </div>
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
       <h1 className="text-2xl font-bold mb-4">Transactions</h1>
       <TransactionList transactions={transactions} setTransactions={setTransactions} setEditingTransaction={setEditingTransaction} />
+      </div>
     </div>
   );
 };
