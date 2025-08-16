@@ -1,5 +1,5 @@
 const express = require('express');
-const { addBudget, getBudgets, updateBudget, deleteBudget } = require('../controllers/BudgetController');
+const { addBudget, getBudgets, updateBudget, deleteBudget } = require('../controllers/budgetController');
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
