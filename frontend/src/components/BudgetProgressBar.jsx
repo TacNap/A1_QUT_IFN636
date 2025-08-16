@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
 
+// This component iterates through transactions for each budget, 
+// And sums those that are within the same category
 const BudgetProgressBar = ({ budget }) => {
   const { user } = useAuth();
   const [spent, setSpent] = useState(0);

@@ -1,7 +1,9 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
-import { Toaster, toast } from 'sonner';
+import { Toaster, toast } from 'sonner'; 
 
+// This component renders supplied transactions in a table or card view,
+// depending on the screen size
 const TransactionList = ({ transactions, setTransactions, setEditingTransaction }) => {
   const { user } = useAuth();
 

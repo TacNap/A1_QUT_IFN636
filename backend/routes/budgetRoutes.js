@@ -3,6 +3,8 @@ const { addBudget, getBudgets, updateBudget, deleteBudget } = require('../contro
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
+
+// API Routes for budget CRUD functions
 router.post('/', protect, addBudget);
 router.get('/', protect, getBudgets);
 router.put('/:id', protect, updateBudget);

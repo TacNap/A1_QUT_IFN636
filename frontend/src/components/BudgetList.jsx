@@ -3,6 +3,9 @@ import axiosInstance from '../axiosConfig';
 import BudgetProgressBar from './BudgetProgressBar';
 import { toast } from 'sonner';
 
+// This components renders budgets in a table or card view,
+// depending on the screen size
+
 const BudgetList = ({ budgets, setBudgets, setEditingBudget }) => {
   const { user } = useAuth();
 

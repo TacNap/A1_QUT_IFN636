@@ -1,5 +1,7 @@
+// Houses the CRUD functions for Budgets.
 const Budget = require('../models/Budget');
 
+// Add Budget
 const addBudget = async(req, res) => {
     const { category, amount } = req.body;
     try {
@@ -10,6 +12,7 @@ const addBudget = async(req, res) => {
     }
 }; 
 
+// Get Budgets
 const getBudgets = async(req, res) => {
     try {
         const budgets = await Budget.find({ userId: req.user.id });
@@ -19,6 +22,7 @@ const getBudgets = async(req, res) => {
     }
 };
 
+// Update Budget
 const updateBudget = async(req, res) => {
     const { category, amount } = req.body;
     try {
@@ -35,6 +39,7 @@ const updateBudget = async(req, res) => {
     }
 };
 
+// Delete Budget
 const deleteBudget = async(req,res) => {
     try {
         const budget = await Budget.findById(req.params.id);
