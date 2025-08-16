@@ -10,7 +10,7 @@ The app will automatically sort transactions into their respective budgets,
 and determine how much is remaining to be spent in that category. 
 
 ### Live URL
-You can access the live platform [Here](http://http://3.26.216.93/).
+You can access the live platform [Here](http://3.26.216.93/).
 
 ### Running the project
 In order to run the project locally:
