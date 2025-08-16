@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Toaster, toast } from 'sonner';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -7,6 +8,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
+    toast.success("Successfully logged out.");
     navigate('/login');
   };
 
@@ -37,6 +39,7 @@ const Navbar = () => {
             </Link>
           </>
         )}
+      <Toaster />
       </div>
     </nav>
   );

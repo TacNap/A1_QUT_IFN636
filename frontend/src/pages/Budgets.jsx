@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
 import BudgetForm from '../components/BudgetForm';
-import BudgetList from '../components/BudgetList'; 
+import BudgetList from '../components/BudgetList';
 import { useAuth } from '../context/AuthContext';
+import { Toaster, toast } from 'sonner';
 
 const Budgets = () => {
   const { user } = useAuth();
@@ -17,15 +18,18 @@ const Budgets = () => {
         });
         setBudgets(response.data);
       } catch (error) {
-        alert('Failed to fetch budgets.');
+        toast.warning('Failed to fetch budgets.');
       }
     };
 
     fetchBudgets();
   }, [user]);
 
+
+
   return (
     <div className="container mx-auto p-6">
+      <Toaster />
       <BudgetForm
         budgets={budgets}
         setBudgets={setBudgets}

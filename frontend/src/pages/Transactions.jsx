@@ -3,6 +3,7 @@ import axiosInstance from '../axiosConfig';
 import TransactionForm from '../components/TransactionForm';
 import TransactionList from '../components/TransactionList';
 import { useAuth } from '../context/AuthContext';
+import { Toaster, toast } from 'sonner';
 
 const Transactions = () => {
   const { user } = useAuth();
@@ -28,7 +29,7 @@ const Transactions = () => {
         });
         setTransactions(response.data);
       } catch (error) {
-        alert('Failed to fetch transactions.');
+        toast.warning('Failed to fetch transactions');
       }
     };
 
@@ -37,6 +38,7 @@ const Transactions = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <Toaster />
       <TransactionForm
         transactions={transactions}
         setTransactions={setTransactions}

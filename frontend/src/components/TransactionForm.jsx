@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
+import { Toaster, toast } from 'sonner';
 
 const TransactionForm = ({ transactions, setTransactions, editingTransaction, setEditingTransaction }) => {
   const { user } = useAuth();
@@ -37,15 +38,16 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
       }
       setEditingTransaction(null);
       setFormData({ vendor: '', date: '', type: '', category: '', amount: '', description: '' });
-      alert('Success!');
+      toast.success('Successfully saved transaction.');
     } catch (error) {
-      alert('Failed to save transaction.');
+      toast.warning('Failed to save transaction.');
     }
   };
 
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded mb-6">
+      <Toaster />
       <h1 className="text-2xl font-bold mb-4">{editingTransaction ? 'Update Transaction' : 'Create Transaction'}</h1>
       <input
         type="text"
