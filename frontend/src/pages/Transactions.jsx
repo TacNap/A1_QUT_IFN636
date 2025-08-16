@@ -3,7 +3,8 @@ import axiosInstance from '../axiosConfig';
 import TransactionForm from '../components/TransactionForm';
 import TransactionList from '../components/TransactionList';
 import { useAuth } from '../context/AuthContext';
-import { Toaster, toast } from 'sonner';
+import { Toaster, toast } from 'sonner'; // Imported for popup messages after CRUD functions
+
 
 const Transactions = () => {
   const { user } = useAuth();
@@ -37,7 +38,7 @@ const Transactions = () => {
   }, [user]);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-4 sm:p-6">
       <Toaster />
       <TransactionForm
         transactions={transactions}
@@ -45,14 +46,14 @@ const Transactions = () => {
         editingTransaction={editingTransaction}
         setEditingTransaction={setEditingTransaction}
       />
-      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-        <h2 className="text-xl font-bold mb-2">Net Flow</h2>
-        <div className={`text-3xl font-bold ${calculateNetFlow() >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+      <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl font-bold mb-2">Net Flow</h2>
+        <div className={`text-2xl sm:text-3xl font-bold ${calculateNetFlow() >= 0 ? 'text-green-600' : 'text-red-600'}`}>
           ${calculateNetFlow().toFixed(2)}
         </div>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-      <h1 className="text-2xl font-bold mb-4">Transactions</h1>
+      <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+      <h1 className="text-xl sm:text-2xl font-bold mb-4">Transactions</h1>
       <TransactionList transactions={transactions} setTransactions={setTransactions} setEditingTransaction={setEditingTransaction} />
       </div>
     </div>
