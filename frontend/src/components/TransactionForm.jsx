@@ -46,9 +46,9 @@ const TransactionForm = ({ transactions, setTransactions, editingTransaction, se
 
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded mb-6">
+    <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-6 shadow-md rounded mb-4 sm:mb-6">
       <Toaster />
-      <h1 className="text-2xl font-bold mb-4">{editingTransaction ? 'Update Transaction' : 'Create Transaction'}</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4">{editingTransaction ? 'Update Transaction' : 'Create Transaction'}</h1>
       <input
         type="text"
         placeholder="Vendor"
