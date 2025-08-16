@@ -3,6 +3,7 @@ const { addTransaction, getTransactions, updateTransaction, deleteTransaction } 
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
+// API Routes for transaction CRUD functions
 router.post('/', protect, addTransaction);
 router.get('/', protect, getTransactions);
 router.put('/:id', protect, updateTransaction);

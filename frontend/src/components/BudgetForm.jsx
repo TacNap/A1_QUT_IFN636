@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
-import { toast } from 'sonner';
+import { toast } from 'sonner'; // Required for CRUD success/error messages
 
 const BudgetForm = ({ budgets, setBudgets, editingBudget, setEditingBudget }) => {
   const { user } = useAuth();

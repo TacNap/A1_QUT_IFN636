@@ -1,5 +1,7 @@
+// Houses the CRUD functions for Transactions
 const Transaction = require('../models/Transaction');
 
+// Add Transaction
 const addTransaction = async(req, res) => {
     const { vendor, date, type, category, amount, description } = req.body;
     try {
@@ -10,6 +12,7 @@ const addTransaction = async(req, res) => {
     }
 }; 
 
+// Get Transactions
 const getTransactions = async(req, res) => {
     try {
         const transactions = await Transaction.find({ userId: req.user.id });
@@ -19,6 +22,7 @@ const getTransactions = async(req, res) => {
     }
 };
 
+// Update Transaction
 const updateTransaction = async(req, res) => {
     const { vendor, date, type, category, amount, description} = req.body;
     try {
@@ -39,6 +43,7 @@ const updateTransaction = async(req, res) => {
     }
 };
 
+// Delete Transaction
 const deleteTransaction = async(req,res) => {
     try {
         const transaction = await Transaction.findById(req.params.id);

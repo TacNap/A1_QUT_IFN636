@@ -11,6 +11,8 @@ const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
 
+  // Uses a reduce function to iterate through each transaction and create a final sum
+  // substracts if transaction.type is send
   const calculateNetFlow = () => {
     return transactions.reduce((total, transaction) => {
       if (transaction.type === 'Send') {
