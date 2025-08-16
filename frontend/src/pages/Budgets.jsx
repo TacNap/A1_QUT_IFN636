@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
 import BudgetForm from '../components/BudgetForm';
-import BudgetList from '../components/BudgetList'; 
+import BudgetList from '../components/BudgetList';
 import { useAuth } from '../context/AuthContext';
+import { Toaster, toast } from 'sonner';
 
 const Budgets = () => {
   const { user } = useAuth();
@@ -24,8 +25,12 @@ const Budgets = () => {
     fetchBudgets();
   }, [user]);
 
+
+
   return (
     <div className="container mx-auto p-6">
+       <Toaster />
+      <button onClick={() => toast('My first toast')}>Give me a toast</button>
       <BudgetForm
         budgets={budgets}
         setBudgets={setBudgets}
