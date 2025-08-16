@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
-import { Toaster, toast } from 'sonner';
+import { toast } from 'sonner';
 
 const BudgetForm = ({ budgets, setBudgets, editingBudget, setEditingBudget }) => {
   const { user } = useAuth();

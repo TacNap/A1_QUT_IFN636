@@ -1,7 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
 import BudgetProgressBar from './BudgetProgressBar';
-import { Toaster, toast } from 'sonner';
+import { toast } from 'sonner';
 
 const BudgetList = ({ budgets, setBudgets, setEditingBudget }) => {
   const { user } = useAuth();
