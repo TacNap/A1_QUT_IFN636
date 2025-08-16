@@ -5,12 +5,10 @@ import axiosInstance from '../axiosConfig';
 const BudgetProgressBar = ({ budget }) => {
   const { user } = useAuth();
   const [spent, setSpent] = useState(0);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        setLoading(true);
         const response = await axiosInstance.get('/api/transactions', {
           headers: { Authorization: `Bearer ${user.token}` },
         });
@@ -27,8 +25,6 @@ const BudgetProgressBar = ({ budget }) => {
       } catch (error) {
         console.error('Failed to fetch transactions:', error);
         setSpent(0);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -37,20 +33,6 @@ const BudgetProgressBar = ({ budget }) => {
 
   const percentage = budget.amount > 0 ? Math.min((spent / budget.amount) * 100, 100) : 0;
   const isOverBudget = spent > budget.amount;
-
-  if (loading) {
-    return (
-      <div className="mb-4">
-        <div className="flex justify-between mb-1">
-          <span className="text-base font-medium text-gray-700">{budget.category}</span>
-          <span className="text-sm font-medium text-gray-500">Loading...</span>
-        </div>
-        <div className="w-full h-6 bg-gray-200 rounded-full">
-          <div className="h-6 bg-gray-300 rounded-full animate-pulse" style={{ width: "30%" }}></div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="mb-4">
