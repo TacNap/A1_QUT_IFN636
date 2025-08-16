@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
+import { Toaster, toast } from 'sonner';
 
 const Profile = () => {
   const { user } = useAuth(); // Access user token from context
@@ -27,7 +28,7 @@ const Profile = () => {
           address: response.data.address || '',
         });
       } catch (error) {
-        alert('Failed to fetch profile. Please try again.');
+        toast.warning('Failed to fetch profile. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -43,9 +44,9 @@ const Profile = () => {
       await axiosInstance.put('/api/auth/profile', formData, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
-      alert('Profile updated successfully!');
+      toast.success('Profile updated successfully!');
     } catch (error) {
-      alert('Failed to update profile. Please try again.');
+      toast.warning('Failed to update profile. Please try again.');
     } finally {
       setLoading(false);
     }

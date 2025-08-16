@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
+import { Toaster, toast } from 'sonner';
 
 const BudgetForm = ({ budgets, setBudgets, editingBudget, setEditingBudget }) => {
   const { user } = useAuth();
@@ -33,9 +34,9 @@ const BudgetForm = ({ budgets, setBudgets, editingBudget, setEditingBudget }) =>
       }
       setEditingBudget(null);
       setFormData({ category: '', amount: '' });
-      alert('Success!');
+      toast.success('Success!');
     } catch (error) {
-      alert('Failed to save budget.');
+      toast.warning('Failed to save budget.');
     }
   };
 

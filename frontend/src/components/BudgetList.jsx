@@ -1,6 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
 import BudgetProgressBar from './BudgetProgressBar';
+import { Toaster, toast } from 'sonner';
 
 const BudgetList = ({ budgets, setBudgets, setEditingBudget }) => {
   const { user } = useAuth();
@@ -11,9 +12,9 @@ const BudgetList = ({ budgets, setBudgets, setEditingBudget }) => {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setBudgets(budgets.filter((budget) => budget._id !== budgetId));
-      alert('Success!');
+      toast.success('Successfully deleted budget.');
     } catch (error) {
-      alert('Failed to delete budget.');
+      toast.warning('Failed to delete budget.');
     }
   };
 

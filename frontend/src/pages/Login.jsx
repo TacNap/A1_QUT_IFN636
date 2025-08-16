@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../axiosConfig';
+import { Toaster, toast } from 'sonner';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -13,14 +14,18 @@ const Login = () => {
     try {
       const response = await axiosInstance.post('/api/auth/login', formData);
       login(response.data);
-      navigate('/transactions');
+      toast.success('Success');
+      setTimeout(() => {
+        navigate('/transactions');
+      }, 1500);
     } catch (error) {
-      alert('Login failed. Please try again.');
+      toast.warning('Login failed. Please try again.');
     }
   };
 
   return (
     <div className="max-w-md mx-auto mt-20">
+      <Toaster />
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded">
         <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
         <input

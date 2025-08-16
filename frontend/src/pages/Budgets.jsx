@@ -18,7 +18,7 @@ const Budgets = () => {
         });
         setBudgets(response.data);
       } catch (error) {
-        alert('Failed to fetch budgets.');
+        toast.warning('Failed to fetch budgets.');
       }
     };
 
@@ -29,8 +29,7 @@ const Budgets = () => {
 
   return (
     <div className="container mx-auto p-6">
-       <Toaster />
-      <button onClick={() => toast('My first toast')}>Give me a toast</button>
+      <Toaster />
       <BudgetForm
         budgets={budgets}
         setBudgets={setBudgets}

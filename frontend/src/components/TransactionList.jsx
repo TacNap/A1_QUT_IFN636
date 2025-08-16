@@ -1,5 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
+import { Toaster, toast } from 'sonner';
 
 const TransactionList = ({ transactions, setTransactions, setEditingTransaction }) => {
   const { user } = useAuth();
@@ -10,9 +11,9 @@ const TransactionList = ({ transactions, setTransactions, setEditingTransaction 
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setTransactions(transactions.filter((transaction) => transaction._id !== transactionId));
-      alert('Success!');
+      toast.success('Successfully deleted transaction.');
     } catch (error) {
-      alert('Failed to delete transaction.');
+      toast.warning('Failed to delete transaction.');
     }
   };
 
@@ -20,6 +21,7 @@ const TransactionList = ({ transactions, setTransactions, setEditingTransaction 
 
   return (
     <div className="">
+      <Toaster />
       <table className="w-full border-collapse bg-white shadow-md rounded-lg mb-6 p-6">
       <thead>
         <tr className="bg-gray-100">

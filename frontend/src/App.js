@@ -6,7 +6,6 @@ import Profile from './pages/Profile';
 import Transactions from './pages/Transactions';
 import Budgets from './pages/Budgets';
 
-
 function App() {
   return (
     <Router>
